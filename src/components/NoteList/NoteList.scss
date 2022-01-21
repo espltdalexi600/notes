@@ -1,0 +1,29 @@
+.NoteList {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
+  max-width: 1680px;
+  padding: 0 60px;
+
+  @media (max-width: 1680px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 1365px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 1050px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 735px) {
+    grid-template-columns: 1fr;
+    padding: 0 30px;
+  }
+
+  @media (max-width: 470px) {
+    padding: 0 15px;
+  }
+}
