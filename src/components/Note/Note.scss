@@ -1,24 +1,28 @@
 .Note {
-  border: 2px solid rgb(230, 230, 230);
+  color: rgb(32, 33, 36);
+  border: 2px solid rgb(224, 224, 224);
   border-radius: 10px;
   max-height: 500px;
   overflow: hidden;
   padding: 15px;
 
   &:hover {
-    box-shadow: 0 0 5px 2px rgb(230, 230, 230);
+    box-shadow: 0 0 5px 2px rgb(224, 224, 224);
   }
 
   &__title {
-    color: rgb(25, 25, 25);
     font-size: 30px;
     margin-bottom: 20px;
     white-space: pre-wrap;
   }
 
   &__body {
-    color: rgb(37, 37, 37);
     font-size: 20px;
     white-space: pre-wrap;
+  }
+
+  &__message {
+    color: rgb(128, 134, 139);
+    font-size: 30px;
   }
 }

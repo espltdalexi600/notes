@@ -1,0 +1,21 @@
+.SearchForm {
+  align-items: center;
+  background-color: rgb(241, 243, 244);
+  border: 2px solid rgb(241, 243, 244);
+  border-radius: 5px;
+  display: flex;
+  height: 48px;
+  padding: 0 60px;
+
+  &--focus {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px 2px rgb(241, 243, 244);
+  }
+
+  &__input {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 20px;
+    outline: none;
+    width: 750px;
+  }
+}

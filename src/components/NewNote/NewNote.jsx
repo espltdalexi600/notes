@@ -7,22 +7,15 @@ function NewNote({ note, addNote, setTitle, setBody }) {
 
   useEffect(() => {
     resizeTextarea(titleRef.current)
+  }, [note.title])
+
+  useEffect(() => {
     resizeTextarea(bodyRef.current)
-  }, [])
+  }, [note.body])
 
   function closeNote(e) {
     if (e.target.className !== 'NewNote') return
     addNote()
-  }
-
-  function changeTitle(e) {
-    setTitle(e)
-    resizeTextarea(e.target)
-  }
-
-  function changeBody(e) {
-    setBody(e)
-    resizeTextarea(e.target)
   }
 
   function resizeTextarea(elem) {
@@ -41,15 +34,15 @@ function NewNote({ note, addNote, setTitle, setBody }) {
           <textarea
             ref={titleRef}
             className="NewNote__title"
-            onChange={changeTitle}
+            onChange={(e) => setTitle(e)}
             placeholder="Введите заголовок"
             value={note.title}
           ></textarea>
           <textarea
-            autoFocus
+            autoFocus={note.body === '' ? true : false}
             ref={bodyRef}
             className="NewNote__body"
-            onChange={changeBody}
+            onChange={(e) => setBody(e)}
             placeholder="Текст заметки"
             value={note.body}
           ></textarea>
