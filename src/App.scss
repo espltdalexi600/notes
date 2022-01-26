@@ -1,8 +1,29 @@
-.App__header {
-  align-items: center;
-  border-bottom: 2px solid rgb(230, 230, 230);
-  display: flex;
-  height: 64px;
-  justify-content: center;
-  margin-bottom: 15px;
+.App {
+  &__header {
+    align-items: center;
+    border-bottom: 2px solid rgb(230, 230, 230);
+    display: flex;
+    height: 64px;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  &__bt-addNote {
+    background-color: rgba(0, 0, 0, 0.2);
+    background-image: url('./img/plus.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+    bottom: 100px;
+    height: 50px;
+    opacity: 0.6;
+    position: fixed;
+    right: 100px;
+    width: 50px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

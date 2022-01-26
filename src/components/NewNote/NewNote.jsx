@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react'
+import Toolbar from '../Toolbar/Toolbar'
 import './NewNote.scss'
 
-function NewNote({ note, addNote, setTitle, setBody }) {
+function NewNote({ note, addNote, deleteNote, setNote }) {
   const titleRef = useRef()
   const bodyRef = useRef()
 
@@ -14,8 +15,28 @@ function NewNote({ note, addNote, setTitle, setBody }) {
   }, [note.body])
 
   function closeNote(e) {
-    if (e.target.className !== 'NewNote') return
-    addNote()
+    if (
+      e.target.className === 'NewNote' ||
+      e.target.className === 'Toolbar__bt Toolbar__bt--close'
+    ) {
+      addNote(note)
+      setNote({})
+    }
+  }
+
+  function copyNote() {
+    addNote(note)
+    addNote({ ...note, id: Date.now() })
+    setNote({})
+  }
+
+  function deleteThisNote() {
+    deleteNote(note.id)
+    setNote({})
+  }
+
+  function changeEditable() {
+    setNote({ ...note, editable: !note.editable })
   }
 
   function resizeTextarea(elem) {
@@ -27,26 +48,50 @@ function NewNote({ note, addNote, setTitle, setBody }) {
     elem.style.height = scroll + 5 + 'px'
   }
 
+  function getDateOFChange(str) {
+    let date = new Date(str)
+    return `Изменено: ${date.getDate()}.${
+      date.getMonth() + 1
+    }.${date.getFullYear()} в ${date.getHours()}:${date.getMinutes()}`
+  }
+
   return (
     <div onMouseDown={closeNote} className="NewNote">
       <div className="NewNote__wrapper">
-        <form className="NewNote__form">
-          <textarea
-            ref={titleRef}
-            className="NewNote__title"
-            onChange={(e) => setTitle(e)}
-            placeholder="Введите заголовок"
-            value={note.title}
-          ></textarea>
-          <textarea
-            autoFocus={note.body === '' ? true : false}
-            ref={bodyRef}
-            className="NewNote__body"
-            onChange={(e) => setBody(e)}
-            placeholder="Текст заметки"
-            value={note.body}
-          ></textarea>
-        </form>
+        <div className="NewNote__form-wrapper">
+          <form className="NewNote__form">
+            <textarea
+              disabled={!note.editable}
+              ref={titleRef}
+              className="NewNote__title"
+              onChange={(e) => setNote({ ...note, title: e.target.value })}
+              placeholder="Введите заголовок"
+              value={note.title}
+            ></textarea>
+            <textarea
+              disabled={!note.editable}
+              autoFocus={note.body === '' ? true : false}
+              ref={bodyRef}
+              className="NewNote__body"
+              onChange={(e) => setNote({ ...note, body: e.target.value })}
+              placeholder="Текст заметки"
+              value={note.body}
+            ></textarea>
+            {note.dateOfChange && (
+              <div className="NewNote__date">
+                {getDateOFChange(note.dateOfChange)}
+              </div>
+            )}
+          </form>
+        </div>
+        <div className="NewNote__footer">
+          <Toolbar
+            closeNote={closeNote}
+            copyNote={copyNote}
+            deleteNote={deleteThisNote}
+            changeEditable={changeEditable}
+          />
+        </div>
       </div>
     </div>
   )

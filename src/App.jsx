@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import NoteList from './components/NoteList/NoteList'
 import NewNote from './components/NewNote/NewNote'
 import SearchForm from './components/SearchForm/SearchForm'
@@ -7,12 +7,10 @@ import './App.scss'
 function App() {
   const [notes, setNotes] = useState([])
 
-  const [note, setNote] = useState({
-    id: '',
-    title: '',
-    body: '',
-    dateOfChange: '',
-  })
+  const [note, setNote] = useState({})
+
+  const [sort, setSort] = useState('title')
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     setNotes(JSON.parse(localStorage.getItem('notes')) || [])
@@ -22,13 +20,19 @@ function App() {
     localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes])
 
-  function setTitle(e) {
-    setNote({ ...note, title: e.target.value })
-  }
+  const sortedNotes = useMemo(() => {
+    if (notes.length < 2 || !sort) return notes
 
-  function setBody(e) {
-    setNote({ ...note, body: e.target.value })
-  }
+    if (sort) {
+      if (sort === 'dateOfChange' || sort === 'dateOfView') {
+        return [...notes].sort((a, b) =>
+          new Date(a[sort]) > new Date(b[sort]) ? -1 : 1,
+        )
+      } else {
+        return [...notes].sort((a, b) => a[sort].localeCompare(b[sort]))
+      }
+    }
+  }, [notes, sort])
 
   function openNote(note) {
     if (note.id) {
@@ -40,17 +44,18 @@ function App() {
         body: '',
         dateOfChange: '',
         dateOfView: '',
+        editable: true,
       })
     }
   }
 
-  function addNote() {
+  function addNote(note) {
     let result = notes.find((item) => item.id === note.id)
-    const date = new Date()
+    const date = new Date().toJSON()
 
     if (result) {
-      setNotes(
-        notes.map((item) => {
+      setNotes((notes) => {
+        return notes.map((item) => {
           if (item.id === note.id) {
             return {
               id: item.id,
@@ -61,25 +66,57 @@ function App() {
                   ? date
                   : item.dateOfChange,
               dateOfView: date,
+              editable: note.editable,
             }
           } else {
             return item
           }
-        }),
-      )
+        })
+      })
+      // setNotes(
+      //   notes.map((item) => {
+      //     if (item.id === note.id) {
+      //       return {
+      //         id: item.id,
+      //         title: note.title.trim(),
+      //         body: note.body.trim(),
+      //         dateOfChange:
+      //           item.title !== note.title || item.body !== note.body
+      //             ? date
+      //             : item.dateOfChange,
+      //         dateOfView: date,
+      //         editable: note.editable,
+      //       }
+      //     } else {
+      //       return item
+      //     }
+      //   }),
+      // )
     } else {
-      setNotes([...notes, { ...note, dateOfChange: date, dateOfView: date }])
+      setNotes((notes) => {
+        return [...notes, { ...note, dateOfChange: date, dateOfView: date }]
+      })
+      // setNotes([...notes, { ...note, dateOfChange: date, dateOfView: date }])
     }
-    setNote({ id: '', title: '', body: '', dateOfChange: '', dateOfView: '' })
+  }
+
+  function deleteNote() {
+    setNotes(notes.filter((item) => (item.id === note.id ? false : true)))
   }
 
   return (
     <div className="App">
       <header className="App__header">
-        <SearchForm />
+        <SearchForm search={search} setSearch={setSearch} />
+        <select value={sort} onChange={(e) => setSort(e.target.value)}>
+          <option value="title">По заголовку</option>
+          <option value="body">По содержимому</option>
+          <option value="dateOfView">По дате просмотра</option>
+          <option value="dateOfChange">По дате изменения</option>
+        </select>
       </header>
-      {notes.length ? (
-        <NoteList notes={notes} openNote={openNote} />
+      {sortedNotes.length ? (
+        <NoteList notes={sortedNotes} openNote={openNote} />
       ) : (
         <h2>Нет заметок</h2>
       )}
@@ -87,11 +124,11 @@ function App() {
         <NewNote
           note={note}
           addNote={addNote}
-          setTitle={setTitle}
-          setBody={setBody}
+          setNote={setNote}
+          deleteNote={deleteNote}
         />
       )}
-      <button onClick={openNote}>Add note</button>
+      <button className="App__bt-addNote" onClick={openNote}></button>
     </div>
   )
 }

@@ -13,13 +13,17 @@
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     color: rgb(32, 33, 36);
-    padding: 15px;
-    width: 500px;
+    position: relative;
+    width: 650px;
+  }
+
+  &__form-wrapper {
+    padding: 15px 15px 0 15px;
   }
 
   &__form {
     max-height: 70vh;
-    min-height: 300px;
+    // min-height: 300px;
     overflow: auto;
 
     &::-webkit-scrollbar {
@@ -38,13 +42,17 @@
       overflow: hidden;
       resize: none;
       width: 100%;
+
+      &:disabled {
+        background-color: rgba(0, 0, 0, 0);
+      }
     }
   }
 
   &__title {
     font-size: 30px;
     line-height: 32px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     &:focus {
       outline: none;
@@ -54,5 +62,17 @@
   &__body {
     font-size: 20px;
     line-height: 24px;
+  }
+
+  &__date {
+    color: rgb(128, 134, 139);
+    font-size: 15px;
+    text-align: center;
+  }
+
+  &__footer {
+    box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.2);
+    margin: 4px 0;
+    width: 100%;
   }
 }
