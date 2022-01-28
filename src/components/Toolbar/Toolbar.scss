@@ -12,13 +12,12 @@
     background-repeat: no-repeat;
     background-size: contain;
     border-radius: 5px;
-    font-size: 15px;
     height: 40px;
     margin-left: 10px;
     width: 40px;
 
     &:hover {
-      background-color: rgb(241, 243, 244);
+      background-color: rgba(0, 0, 0, 0.2);
     }
 
     &--edit {

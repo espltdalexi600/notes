@@ -9,7 +9,7 @@ function App() {
 
   const [note, setNote] = useState({})
 
-  const [sort, setSort] = useState('title')
+  const [sort, setSort] = useState('dateOfView')
   const [search, setSearch] = useState('')
 
   useEffect(() => {
@@ -23,16 +23,22 @@ function App() {
   const sortedNotes = useMemo(() => {
     if (notes.length < 2 || !sort) return notes
 
-    if (sort) {
-      if (sort === 'dateOfChange' || sort === 'dateOfView') {
-        return [...notes].sort((a, b) =>
-          new Date(a[sort]) > new Date(b[sort]) ? -1 : 1,
-        )
-      } else {
-        return [...notes].sort((a, b) => a[sort].localeCompare(b[sort]))
-      }
+    if (sort === 'dateOfChange' || sort === 'dateOfView') {
+      return [...notes].sort((a, b) =>
+        new Date(a[sort]) > new Date(b[sort]) ? -1 : 1,
+      )
     }
+
+    return [...notes].sort((a, b) => a[sort].localeCompare(b[sort]))
   }, [notes, sort])
+
+  const sortedAndSearchedNotes = useMemo(() => {
+    let strSearch = search.trim()
+    if (!strSearch) return sortedNotes
+    return sortedNotes.filter(
+      (item) => item.title.includes(strSearch) || item.body.includes(strSearch),
+    )
+  }, [search, sortedNotes])
 
   function openNote(note) {
     if (note.id) {
@@ -73,30 +79,10 @@ function App() {
           }
         })
       })
-      // setNotes(
-      //   notes.map((item) => {
-      //     if (item.id === note.id) {
-      //       return {
-      //         id: item.id,
-      //         title: note.title.trim(),
-      //         body: note.body.trim(),
-      //         dateOfChange:
-      //           item.title !== note.title || item.body !== note.body
-      //             ? date
-      //             : item.dateOfChange,
-      //         dateOfView: date,
-      //         editable: note.editable,
-      //       }
-      //     } else {
-      //       return item
-      //     }
-      //   }),
-      // )
     } else {
       setNotes((notes) => {
         return [...notes, { ...note, dateOfChange: date, dateOfView: date }]
       })
-      // setNotes([...notes, { ...note, dateOfChange: date, dateOfView: date }])
     }
   }
 
@@ -116,7 +102,7 @@ function App() {
         </select>
       </header>
       {sortedNotes.length ? (
-        <NoteList notes={sortedNotes} openNote={openNote} />
+        <NoteList notes={sortedAndSearchedNotes} openNote={openNote} />
       ) : (
         <h2>Нет заметок</h2>
       )}

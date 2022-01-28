@@ -1,21 +1,50 @@
 .SearchForm {
   align-items: center;
-  background-color: rgb(241, 243, 244);
-  border: 2px solid rgb(241, 243, 244);
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   display: flex;
+  flex: 0 0 750px;
   height: 48px;
-  padding: 0 60px;
 
   &--focus {
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 5px 2px rgb(241, 243, 244);
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
   }
 
   &__input {
     background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    flex: 1 0;
     font-size: 20px;
     outline: none;
-    width: 750px;
+  }
+
+  &__bt-wrapper {
+    align-items: center;
+    display: flex;
+    flex: 0 0 60px;
+    justify-content: center;
+  }
+
+  &__bt {
+    background-color: rgba(0, 0, 0, 0);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &--search {
+      background-image: url('../../img/search.svg');
+    }
+
+    &--reset {
+      background-image: url('../../img/reset.svg');
+    }
   }
 }

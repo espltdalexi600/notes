@@ -1,5 +1,6 @@
 .NoteList {
   display: grid;
+  grid-auto-flow: dense;
   grid-gap: 15px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin: 0 auto;

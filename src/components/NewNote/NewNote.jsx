@@ -31,6 +31,10 @@ function NewNote({ note, addNote, deleteNote, setNote }) {
   }
 
   function deleteThisNote() {
+    let result = window.confirm(
+      'Вы действительно хотите удалить заметку? Восстановление будет невозможно.',
+    )
+    if (!result) return
     deleteNote(note.id)
     setNote({})
   }

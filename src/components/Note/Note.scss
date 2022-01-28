@@ -1,13 +1,18 @@
 .Note {
   color: rgb(32, 33, 36);
-  border: 2px solid rgb(224, 224, 224);
+  border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   max-height: 500px;
+  min-height: 150px;
   overflow: hidden;
   padding: 15px;
 
   &:hover {
-    box-shadow: 0 0 5px 2px rgb(224, 224, 224);
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &--high {
+    grid-row: span 2;
   }
 
   &__title {
