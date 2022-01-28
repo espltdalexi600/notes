@@ -1,33 +1,38 @@
 import React from 'react'
+import MyButton from '../MyButton/MyButton'
 import './Toolbar.scss'
+
+// import archiveIMG from '../../img/archive.svg'
+import closeIMG from '../../img/close.png'
+import copyIMG from '../../img/copy.png'
+import deleteIMG from '../../img/delete.png'
+import editIMG from '../../img/edit.png'
 
 function Toolbar({ closeNote, copyNote, deleteNote, changeEditable }) {
   return (
     <div className="Toolbar">
-      <button
-        className="Toolbar__bt Toolbar__bt--edit"
-        title="Запрет редактирования"
+      <MyButton
         onClick={changeEditable}
-      ></button>
-      <button
-        className="Toolbar__bt Toolbar__bt--archive"
-        title="В архив"
-      ></button>
-      <button
-        className="Toolbar__bt Toolbar__bt--copy"
-        title="Дублировать"
+        style={{ backgroundImage: `url(${editIMG})` }}
+        img={editIMG}
+        title={'Запрет редактирования'}
+      />
+      {/* <MyButton img={archiveIMG} title="В архив" /> */}
+      <MyButton
         onClick={copyNote}
-      ></button>
-      <button
-        className="Toolbar__bt Toolbar__bt--delete"
-        title="Удалить"
+        style={{ backgroundImage: `url(${copyIMG})` }}
+        title={'Копировать'}
+      />
+      <MyButton
         onClick={deleteNote}
-      ></button>
-      <button
-        className="Toolbar__bt Toolbar__bt--close"
-        title="Закрыть"
+        style={{ backgroundImage: `url(${deleteIMG})` }}
+        title={'Удалить'}
+      />
+      <MyButton
         onClick={closeNote}
-      ></button>
+        style={{ backgroundImage: `url(${closeIMG})` }}
+        title={'Закрыть'}
+      />
     </div>
   )
 }

@@ -1,5 +1,9 @@
 import React, { useState, useRef } from 'react'
+import MyButton from '../MyButton/MyButton'
 import './SearchForm.scss'
+
+import searchIMG from '../../img/search.png'
+import resetIMG from '../../img/close.png'
 
 function SearchForm({ search, setSearch }) {
   let [focusForm, setfocusForm] = useState(false)
@@ -20,10 +24,11 @@ function SearchForm({ search, setSearch }) {
   return (
     <form className={focusForm ? 'SearchForm SearchForm--focus' : 'SearchForm'}>
       <div className="SearchForm__bt-wrapper">
-        <button
-          className="SearchForm__bt SearchForm__bt--search"
+        <MyButton
           onClick={focusSearchForm}
-        ></button>
+          style={{ backgroundImage: `url(${searchIMG})` }}
+          title={'Поиск'}
+        />
       </div>
       <input
         value={search}
@@ -36,11 +41,13 @@ function SearchForm({ search, setSearch }) {
         type="text"
       />
       <div className="SearchForm__bt-wrapper">
-        <button
-          hidden={!search}
-          className="SearchForm__bt SearchForm__bt--reset"
-          onClick={resetSearchForm}
-        ></button>
+        <div hidden={!search}>
+          <MyButton
+            onClick={resetSearchForm}
+            style={{ backgroundImage: `url(${resetIMG})` }}
+            title={'Сбросить'}
+          />
+        </div>
       </div>
     </form>
   )

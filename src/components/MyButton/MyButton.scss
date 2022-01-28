@@ -1,0 +1,13 @@
+.MyButton {
+  background-color: rgba(0, 0, 0, 0);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  border-radius: 5px;
+  height: 35px;
+  width: 35px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}

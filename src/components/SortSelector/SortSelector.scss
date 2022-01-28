@@ -1,0 +1,19 @@
+.SortSelector {
+  position: relative;
+
+  &__menu {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    left: 0;
+    position: absolute;
+    top: 40px;
+
+    & button {
+      border-radius: 0;
+      font-size: 15px;
+      padding: 0 5px;
+      width: 100%;
+    }
+  }
+}

@@ -25,26 +25,4 @@
     flex: 0 0 60px;
     justify-content: center;
   }
-
-  &__bt {
-    background-color: rgba(0, 0, 0, 0);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border-radius: 5px;
-    height: 40px;
-    width: 40px;
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.2);
-    }
-
-    &--search {
-      background-image: url('../../img/search.svg');
-    }
-
-    &--reset {
-      background-image: url('../../img/reset.svg');
-    }
-  }
 }

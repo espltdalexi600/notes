@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import NoteList from './components/NoteList/NoteList'
 import NewNote from './components/NewNote/NewNote'
 import SearchForm from './components/SearchForm/SearchForm'
+import SortSelector from './components/SortSelector/SortSelector'
 import './App.scss'
 
 function App() {
@@ -100,6 +101,7 @@ function App() {
           <option value="dateOfView">По дате просмотра</option>
           <option value="dateOfChange">По дате изменения</option>
         </select>
+        <SortSelector />
       </header>
       {sortedNotes.length ? (
         <NoteList notes={sortedAndSearchedNotes} openNote={openNote} />

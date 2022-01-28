@@ -6,38 +6,7 @@
   padding-right: 10px;
   width: 100%;
 
-  &__bt {
-    background-color: rgba(0, 0, 0, 0);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border-radius: 5px;
-    height: 40px;
+  & button {
     margin-left: 10px;
-    width: 40px;
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.2);
-    }
-
-    &--edit {
-      background-image: url('../../img/edit.svg');
-    }
-
-    &--archive {
-      background-image: url('../../img/archive.svg');
-    }
-
-    &--copy {
-      background-image: url('../../img/copy.svg');
-    }
-
-    &--delete {
-      background-image: url('../../img/delete.svg');
-    }
-
-    &--close {
-      background-image: url('../../img/close.svg');
-    }
   }
 }

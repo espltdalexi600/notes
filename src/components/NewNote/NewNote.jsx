@@ -15,10 +15,7 @@ function NewNote({ note, addNote, deleteNote, setNote }) {
   }, [note.body])
 
   function closeNote(e) {
-    if (
-      e.target.className === 'NewNote' ||
-      e.target.className === 'Toolbar__bt Toolbar__bt--close'
-    ) {
+    if (e.target.className === 'NewNote') {
       addNote(note)
       setNote({})
     }
