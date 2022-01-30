@@ -1,0 +1,29 @@
+.SettingsPanel {
+  align-items: center;
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1680px;
+  padding: 15px 60px;
+
+  @media (max-width: 735px) {
+    padding: 0 30px;
+  }
+
+  @media (max-width: 470px) {
+    padding: 0 15px;
+  }
+
+  &__title {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__settings {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -14,7 +14,6 @@ function Toolbar({ closeNote, copyNote, deleteNote, changeEditable }) {
       <MyButton
         onClick={changeEditable}
         style={{ backgroundImage: `url(${editIMG})` }}
-        img={editIMG}
         title={'Запрет редактирования'}
       />
       {/* <MyButton img={archiveIMG} title="В архив" /> */}

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import NoteList from './components/NoteList/NoteList'
 import NewNote from './components/NewNote/NewNote'
 import SearchForm from './components/SearchForm/SearchForm'
-import SortSelector from './components/SortSelector/SortSelector'
+import SettingsPanel from './components/SettingsPanel/SettingsPanel'
 import './App.scss'
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
 
   const [sort, setSort] = useState('dateOfView')
   const [search, setSearch] = useState('')
+  const [view, setView] = useState('table')
 
   useEffect(() => {
     setNotes(JSON.parse(localStorage.getItem('notes')) || [])
@@ -95,13 +96,24 @@ function App() {
     <div className="App">
       <header className="App__header">
         <SearchForm search={search} setSearch={setSearch} />
-        <SortSelector sort={sort} setSort={setSort} />
       </header>
-      {sortedNotes.length ? (
-        <NoteList notes={sortedAndSearchedNotes} openNote={openNote} />
-      ) : (
-        <h2>Нет заметок</h2>
-      )}
+      <div>
+        <SettingsPanel
+          view={view}
+          setView={setView}
+          sort={sort}
+          setSort={setSort}
+        />
+        {sortedNotes.length ? (
+          <NoteList
+            notes={sortedAndSearchedNotes}
+            openNote={openNote}
+            view={view}
+          />
+        ) : (
+          <h2>Нет заметок</h2>
+        )}
+      </div>
       {note.id && (
         <NewNote
           note={note}

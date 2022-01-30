@@ -20,7 +20,7 @@ function SortSelector({ sort, setSort }) {
         style={{ backgroundImage: `url(${sortIMG})` }}
         title={'Выбрать сортировку'}
       />
-      <div className="SortSelector__space"></div>
+      <div className="SortSelector__space" hidden={!showSortMenu}></div>
       <div className="SortSelector__menu" hidden={!showSortMenu}>
         <MyButton data-option="title" onClick={selectSort}>
           {sort === 'title' ? <CheckMark /> : ''}По заголовку

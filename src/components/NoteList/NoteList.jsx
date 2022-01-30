@@ -3,15 +3,19 @@ import Note from '../Note/Note'
 
 import './NoteList.scss'
 
-function NoteList({ notes, openNote }) {
+function NoteList({ notes, openNote, view }) {
   return (
-    <div>
-      <main className="NoteList">
-        {notes.map((note) => (
-          <Note key={note.id} note={note} openNote={openNote} />
-        ))}
-      </main>
-    </div>
+    <main
+      className={
+        view === 'table'
+          ? 'NoteList NoteList--inTable'
+          : 'NoteList NoteList--inList'
+      }
+    >
+      {notes.map((note) => (
+        <Note key={note.id} note={note} openNote={openNote} />
+      ))}
+    </main>
   )
 }
 

@@ -1,30 +1,41 @@
 .NoteList {
   display: grid;
-  grid-auto-flow: dense;
   grid-gap: 15px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin: 0 auto;
-  max-width: 1680px;
   padding: 0 60px;
 
-  @media (max-width: 1680px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-
-  @media (max-width: 1365px) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  @media (max-width: 1050px) {
-    grid-template-columns: 1fr 1fr;
-  }
-
   @media (max-width: 735px) {
-    grid-template-columns: 1fr;
     padding: 0 30px;
   }
 
   @media (max-width: 470px) {
     padding: 0 15px;
+  }
+
+  &--inList {
+    grid-template-columns: 1fr;
+    max-width: 900px;
+  }
+
+  &--inTable {
+    grid-auto-flow: dense;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    max-width: 1680px;
+
+    @media (max-width: 1680px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 1365px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 1050px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 735px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
