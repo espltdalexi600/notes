@@ -95,13 +95,7 @@ function App() {
     <div className="App">
       <header className="App__header">
         <SearchForm search={search} setSearch={setSearch} />
-        <select value={sort} onChange={(e) => setSort(e.target.value)}>
-          <option value="title">По заголовку</option>
-          <option value="body">По содержимому</option>
-          <option value="dateOfView">По дате просмотра</option>
-          <option value="dateOfChange">По дате изменения</option>
-        </select>
-        <SortSelector />
+        <SortSelector sort={sort} setSort={setSort} />
       </header>
       {sortedNotes.length ? (
         <NoteList notes={sortedAndSearchedNotes} openNote={openNote} />
