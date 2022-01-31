@@ -7,20 +7,28 @@ import './App.scss'
 
 function App() {
   const [notes, setNotes] = useState([])
-
   const [note, setNote] = useState({})
-
   const [sort, setSort] = useState('dateOfView')
   const [search, setSearch] = useState('')
   const [view, setView] = useState('table')
 
   useEffect(() => {
     setNotes(JSON.parse(localStorage.getItem('notes')) || [])
+    setSort(JSON.parse(localStorage.getItem('sort')) || 'dateOfView')
+    setView(JSON.parse(localStorage.getItem('view')) || 'table')
   }, [])
 
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes])
+
+  useEffect(() => {
+    localStorage.setItem('sort', JSON.stringify(sort))
+  }, [sort])
+
+  useEffect(() => {
+    localStorage.setItem('view', JSON.stringify(view))
+  }, [view])
 
   const sortedNotes = useMemo(() => {
     if (notes.length < 2 || !sort) return notes
