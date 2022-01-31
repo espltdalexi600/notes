@@ -2,8 +2,9 @@ import React, { useState, useRef } from 'react'
 import MyButton from '../MyButton/MyButton'
 import './SearchForm.scss'
 
-import searchIMG from '../../img/search.png'
-import resetIMG from '../../img/close.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 function SearchForm({ search, setSearch }) {
   let [focusForm, setfocusForm] = useState(false)
@@ -24,11 +25,12 @@ function SearchForm({ search, setSearch }) {
   return (
     <form className={focusForm ? 'SearchForm SearchForm--focus' : 'SearchForm'}>
       <div className="SearchForm__bt-wrapper">
-        <MyButton
-          onClick={focusSearchForm}
-          style={{ backgroundImage: `url(${searchIMG})` }}
-          title={'Поиск'}
-        />
+        <MyButton onClick={focusSearchForm} title={'Поиск'}>
+          <FontAwesomeIcon
+            icon={faSearch}
+            style={{ fontSize: '20px', color: '#4a4a4a' }}
+          />
+        </MyButton>
       </div>
       <input
         value={search}
@@ -42,11 +44,12 @@ function SearchForm({ search, setSearch }) {
       />
       <div className="SearchForm__bt-wrapper">
         <div hidden={!search}>
-          <MyButton
-            onClick={resetSearchForm}
-            style={{ backgroundImage: `url(${resetIMG})` }}
-            title={'Сбросить'}
-          />
+          <MyButton onClick={resetSearchForm} title={'Сбросить'}>
+            <FontAwesomeIcon
+              icon={faTimes}
+              style={{ fontSize: '20px', color: '#4a4a4a' }}
+            />
+          </MyButton>
         </div>
       </div>
     </form>

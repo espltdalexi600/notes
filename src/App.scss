@@ -7,22 +7,13 @@
     justify-content: center;
   }
 
-  &__bt-addNote {
-    background-color: rgba(0, 0, 0, 0.2);
-    background-image: url('./img/plus.svg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border-radius: 50%;
+  &__bt-addNote-wrapper {
+    background-color: rgba(0, 0, 0, 0.05);
     bottom: 100px;
-    height: 50px;
-    opacity: 0.6;
+    border-radius: 5px;
+    height: 45px;
     position: fixed;
     right: 100px;
-    width: 50px;
-
-    &:hover {
-      opacity: 1;
-    }
+    width: 45px;
   }
 }

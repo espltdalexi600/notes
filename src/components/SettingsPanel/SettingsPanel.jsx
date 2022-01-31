@@ -3,8 +3,9 @@ import SortSelector from '../SortSelector/SortSelector'
 import MyButton from '../MyButton/MyButton'
 import './SettingsPanel.scss'
 
-import tableIMG from '../../img/table.png'
-import listIMG from '../../img/list.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEquals } from '@fortawesome/free-solid-svg-icons'
+import { faThLarge } from '@fortawesome/free-solid-svg-icons'
 
 function SettingsPanel({ view, setView, sort, setSort }) {
   return (
@@ -12,18 +13,20 @@ function SettingsPanel({ view, setView, sort, setSort }) {
       <div className="SettingsPanel__title">Заметки</div>
       <div className="SettingsPanel__settings">
         {view === 'list' && (
-          <MyButton
-            style={{ backgroundImage: `url(${tableIMG})` }}
-            onClick={() => setView('table')}
-            title="Таблица"
-          />
+          <MyButton onClick={() => setView('table')} title="Таблица">
+            <FontAwesomeIcon
+              icon={faThLarge}
+              style={{ fontSize: '20px', color: '#4a4a4a' }}
+            />
+          </MyButton>
         )}
         {view === 'table' && (
-          <MyButton
-            style={{ backgroundImage: `url(${listIMG})` }}
-            onClick={() => setView('list')}
-            title="Список"
-          />
+          <MyButton onClick={() => setView('list')} title="Список">
+            <FontAwesomeIcon
+              icon={faEquals}
+              style={{ fontSize: '20px', color: '#4a4a4a' }}
+            />
+          </MyButton>
         )}
         <SortSelector sort={sort} setSort={setSort} />
       </div>

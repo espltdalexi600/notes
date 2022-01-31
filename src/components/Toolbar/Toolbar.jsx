@@ -2,36 +2,46 @@ import React from 'react'
 import MyButton from '../MyButton/MyButton'
 import './Toolbar.scss'
 
-// import archiveIMG from '../../img/archive.svg'
-import closeIMG from '../../img/close.png'
-import copyIMG from '../../img/copy.png'
-import deleteIMG from '../../img/delete.png'
-import editIMG from '../../img/edit.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faArchive } from '@fortawesome/free-solid-svg-icons'
+import { faCopy } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 function Toolbar({ closeNote, copyNote, deleteNote, changeEditable }) {
   return (
     <div className="Toolbar">
-      <MyButton
-        onClick={changeEditable}
-        style={{ backgroundImage: `url(${editIMG})` }}
-        title={'Запрет редактирования'}
-      />
-      {/* <MyButton img={archiveIMG} title="В архив" /> */}
-      <MyButton
-        onClick={copyNote}
-        style={{ backgroundImage: `url(${copyIMG})` }}
-        title={'Копировать'}
-      />
-      <MyButton
-        onClick={deleteNote}
-        style={{ backgroundImage: `url(${deleteIMG})` }}
-        title={'Удалить'}
-      />
-      <MyButton
-        onClick={closeNote}
-        style={{ backgroundImage: `url(${closeIMG})` }}
-        title={'Закрыть'}
-      />
+      <MyButton onClick={changeEditable} title={'Запрет редактирования'}>
+        <FontAwesomeIcon
+          icon={faEdit}
+          style={{ fontSize: '20px', color: '#4a4a4a' }}
+        />
+      </MyButton>
+      <MyButton title={'В архив'}>
+        <FontAwesomeIcon
+          icon={faArchive}
+          style={{ fontSize: '20px', color: '#4a4a4a' }}
+        />
+      </MyButton>
+      <MyButton onClick={copyNote} title={'Копировать'}>
+        <FontAwesomeIcon
+          icon={faCopy}
+          style={{ fontSize: '20px', color: '#4a4a4a' }}
+        />
+      </MyButton>
+      <MyButton onClick={deleteNote} title={'Удалить'}>
+        <FontAwesomeIcon
+          icon={faTrashAlt}
+          style={{ fontSize: '20px', color: '#4a4a4a' }}
+        />
+      </MyButton>
+      <MyButton onClick={closeNote} title={'Закрыть'}>
+        <FontAwesomeIcon
+          icon={faWindowClose}
+          style={{ fontSize: '20px', color: '#4a4a4a' }}
+        />
+      </MyButton>
     </div>
   )
 }

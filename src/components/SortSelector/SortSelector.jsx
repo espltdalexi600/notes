@@ -3,7 +3,8 @@ import MyButton from '../MyButton/MyButton'
 import CheckMark from '../CheckMark/CheckMark'
 import './SortSelector.scss'
 
-import sortIMG from '../../img/sort.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons'
 
 function SortSelector({ sort, setSort }) {
   let [showSortMenu, setShowSortMenu] = useState(false)
@@ -17,9 +18,13 @@ function SortSelector({ sort, setSort }) {
     <div className="SortSelector" onMouseLeave={() => setShowSortMenu(false)}>
       <MyButton
         onClick={() => setShowSortMenu(!showSortMenu)}
-        style={{ backgroundImage: `url(${sortIMG})` }}
         title={'Выбрать сортировку'}
-      />
+      >
+        <FontAwesomeIcon
+          icon={faSortAmountDownAlt}
+          style={{ fontSize: '20px', color: '#4a4a4a' }}
+        />
+      </MyButton>
       <div className="SortSelector__space" hidden={!showSortMenu}></div>
       <div className="SortSelector__menu" hidden={!showSortMenu}>
         <MyButton data-option="title" onClick={selectSort}>

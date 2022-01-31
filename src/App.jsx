@@ -3,7 +3,11 @@ import NoteList from './components/NoteList/NoteList'
 import NewNote from './components/NewNote/NewNote'
 import SearchForm from './components/SearchForm/SearchForm'
 import SettingsPanel from './components/SettingsPanel/SettingsPanel'
+import MyButton from './components/MyButton/MyButton'
 import './App.scss'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   const [notes, setNotes] = useState([])
@@ -130,7 +134,18 @@ function App() {
           deleteNote={deleteNote}
         />
       )}
-      <button className="App__bt-addNote" onClick={openNote}></button>
+      <div className="App__bt-addNote-wrapper">
+        <MyButton
+          onClick={openNote}
+          style={{ height: '45px', width: '45px' }}
+          title={'Новая заметка'}
+        >
+          <FontAwesomeIcon
+            icon={faPlus}
+            style={{ fontSize: '30px', color: '#4a4a4a' }}
+          />
+        </MyButton>
+      </div>
     </div>
   )
 }
