@@ -1,0 +1,14 @@
+.СolorPalette {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  & li {
+    margin-left: 10px;
+  }
+
+  & button:hover {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+  }
+}

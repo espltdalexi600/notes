@@ -10,6 +10,7 @@ function Note({ note, openNote }) {
     <article
       onClick={() => openNote(note)}
       className={checkHigh(note) ? 'Note Note--high' : 'Note'}
+      style={{ backgroundColor: note.background }}
     >
       {note.title && <h2 className="Note__title">{note.title}</h2>}
       {note.body && <p className="Note__body">{note.body}</p>}

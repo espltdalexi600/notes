@@ -65,6 +65,7 @@ function App() {
         dateOfChange: '',
         dateOfView: '',
         editable: true,
+        background: 'rgba(0, 0, 0, 0)',
       })
     }
   }
@@ -87,6 +88,7 @@ function App() {
                   : item.dateOfChange,
               dateOfView: date,
               editable: note.editable,
+              background: note.background,
             }
           } else {
             return item
