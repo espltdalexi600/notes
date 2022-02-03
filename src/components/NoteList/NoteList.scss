@@ -1,3 +1,5 @@
+@import '../../common.scss';
+
 .NoteList {
   display: grid;
   grid-auto-rows: 150px;
@@ -9,7 +11,7 @@
     padding: 0 30px;
   }
 
-  @media (max-width: 470px) {
+  @media (max-width: $mobile-width) {
     padding: 0 15px;
   }
 
@@ -33,10 +35,6 @@
 
     @media (max-width: 1050px) {
       grid-template-columns: 1fr 1fr;
-    }
-
-    @media (max-width: 735px) {
-      grid-template-columns: 1fr;
     }
   }
 }

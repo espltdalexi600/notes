@@ -1,6 +1,9 @@
+@import '../../common.scss';
+
 .Note {
   color: rgb(32, 33, 36);
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border: 1px solid;
   border-radius: 10px;
   overflow: hidden;
   padding: 15px;
@@ -17,11 +20,19 @@
     font-size: 30px;
     margin-bottom: 20px;
     white-space: pre-wrap;
+
+    @media (max-width: $mobile-width) {
+      font-size: 20px;
+    }
   }
 
   &__body {
     font-size: 20px;
     white-space: pre-wrap;
+
+    @media (max-width: $mobile-width) {
+      font-size: 15px;
+    }
   }
 
   &__message {

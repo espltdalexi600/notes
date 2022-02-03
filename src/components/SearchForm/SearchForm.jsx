@@ -32,16 +32,18 @@ function SearchForm({ search, setSearch }) {
           />
         </MyButton>
       </div>
-      <input
-        value={search}
-        ref={searchInputRef}
-        onChange={(e) => setSearch(e.target.value)}
-        onFocus={() => setfocusForm(true)}
-        onBlur={() => setfocusForm(false)}
-        placeholder="Поиск"
-        className="SearchForm__input"
-        type="text"
-      />
+      <div className="SearchForm__input-wrapper">
+        <input
+          value={search}
+          ref={searchInputRef}
+          onChange={(e) => setSearch(e.target.value)}
+          onFocus={() => setfocusForm(true)}
+          onBlur={() => setfocusForm(false)}
+          placeholder="Поиск"
+          className="SearchForm__input"
+          type="text"
+        />
+      </div>
       <div className="SearchForm__bt-wrapper">
         <div hidden={!search}>
           <MyButton onClick={resetSearchForm} title={'Сбросить'}>

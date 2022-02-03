@@ -1,3 +1,5 @@
+@import '../../common.scss';
+
 .NewNote {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.3);
@@ -8,29 +10,35 @@
   position: fixed;
   right: 0;
   top: 0;
+  z-index: 1;
 
   &__wrapper {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     color: rgb(32, 33, 36);
+    height: 70vh;
+    overflow: hidden;
     width: 650px;
+
+    @media (max-width: $mobile-width), (max-height: $mobile-width) {
+      border-radius: 0%;
+      height: 100vh;
+      width: 100vw;
+    }
   }
 
   &__shield {
-    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 1fr auto;
     height: 100%;
-    position: relative;
     width: 100%;
   }
 
-  &__form-wrapper {
-    padding: 15px 15px 0 15px;
-  }
-
   &__form {
-    max-height: 70vh;
-    // min-height: 300px;
+    height: 100%;
     overflow: auto;
+    padding: 15px 15px 5px 15px;
+    width: 100%;
 
     &::-webkit-scrollbar {
       background-color: rgba(0, 0, 0, 0);
@@ -78,6 +86,7 @@
   }
 
   &__footer {
+    display: block;
     box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.2);
     padding: 4px 0;
   }

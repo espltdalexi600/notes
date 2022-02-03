@@ -62,32 +62,30 @@ function NewNote({ note, setNote, addNote, deleteNote }) {
           className="NewNote__shield"
           style={{ backgroundColor: note.background }}
         >
-          <div className="NewNote__form-wrapper">
-            <form className="NewNote__form">
-              <textarea
-                disabled={!note.editable}
-                ref={titleRef}
-                className="NewNote__title"
-                onChange={(e) => setNote({ ...note, title: e.target.value })}
-                placeholder="Введите заголовок"
-                value={note.title}
-              ></textarea>
-              <textarea
-                disabled={!note.editable}
-                autoFocus={note.body === '' ? true : false}
-                ref={bodyRef}
-                className="NewNote__body"
-                onChange={(e) => setNote({ ...note, body: e.target.value })}
-                placeholder="Текст заметки"
-                value={note.body}
-              ></textarea>
-              {note.dateOfChange && (
-                <div className="NewNote__date">
-                  {getDateOFChange(note.dateOfChange)}
-                </div>
-              )}
-            </form>
-          </div>
+          <form className="NewNote__form">
+            <textarea
+              disabled={!note.editable}
+              ref={titleRef}
+              className="NewNote__title"
+              onChange={(e) => setNote({ ...note, title: e.target.value })}
+              placeholder="Введите заголовок"
+              value={note.title}
+            ></textarea>
+            <textarea
+              disabled={!note.editable}
+              autoFocus={note.body === '' ? true : false}
+              ref={bodyRef}
+              className="NewNote__body"
+              onChange={(e) => setNote({ ...note, body: e.target.value })}
+              placeholder="Текст заметки"
+              value={note.body}
+            ></textarea>
+            {note.dateOfChange && (
+              <div className="NewNote__date">
+                {getDateOFChange(note.dateOfChange)}
+              </div>
+            )}
+          </form>
           <div className="NewNote__footer">
             {showColPalet && (
               <ColorPalette
