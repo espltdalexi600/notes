@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNotes } from './hooks/useNotes'
 import NoteList from './components/NoteList/NoteList'
 import NewNote from './components/NewNote/NewNote'
 import SearchForm from './components/SearchForm/SearchForm'
@@ -34,25 +35,7 @@ function App() {
     localStorage.setItem('view', JSON.stringify(view))
   }, [view])
 
-  const sortedNotes = useMemo(() => {
-    if (notes.length < 2 || !sort) return notes
-
-    if (sort === 'dateOfChange' || sort === 'dateOfView') {
-      return [...notes].sort((a, b) =>
-        new Date(a[sort]) > new Date(b[sort]) ? -1 : 1,
-      )
-    }
-
-    return [...notes].sort((a, b) => a[sort].localeCompare(b[sort]))
-  }, [notes, sort])
-
-  const sortedAndSearchedNotes = useMemo(() => {
-    let strSearch = search.trim()
-    if (!strSearch) return sortedNotes
-    return sortedNotes.filter(
-      (item) => item.title.includes(strSearch) || item.body.includes(strSearch),
-    )
-  }, [search, sortedNotes])
+  const sortedAndSearchedNotes = useNotes(notes, sort, search)
 
   function openNote(note) {
     if (note.id) {
@@ -118,14 +101,14 @@ function App() {
           sort={sort}
           setSort={setSort}
         />
-        {sortedNotes.length ? (
+        {sortedAndSearchedNotes.length ? (
           <NoteList
             notes={sortedAndSearchedNotes}
             openNote={openNote}
             view={view}
           />
         ) : (
-          <h2>Нет заметок</h2>
+          <h2>Заметки не найдены</h2>
         )}
       </div>
       {note.id && (
