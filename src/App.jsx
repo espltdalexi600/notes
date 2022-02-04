@@ -4,7 +4,7 @@ import NoteList from './components/NoteList/NoteList'
 import NewNote from './components/NewNote/NewNote'
 import SearchForm from './components/SearchForm/SearchForm'
 import SettingsPanel from './components/SettingsPanel/SettingsPanel'
-import MyButton from './components/MyButton/MyButton'
+import MyButton from './components/generic/MyButton'
 import './App.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

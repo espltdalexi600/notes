@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Toolbar from '../Toolbar/Toolbar'
-import ColorPalette from '../СolorPalette/СolorPalette'
+import Toolbar from './Toolbar'
+import ColorPalette from './СolorPalette'
+import { resizeTextarea } from '../../lib/resixeTextarea'
+import { getDateOFChange } from '../../lib/getDateOFChange'
 import './NewNote.scss'
 
 function NewNote({ note, setNote, addNote, deleteNote }) {
@@ -37,22 +39,6 @@ function NewNote({ note, setNote, addNote, deleteNote }) {
     if (!result) return
     deleteNote(note.id)
     setNote({})
-  }
-
-  function resizeTextarea(elem) {
-    let str = getComputedStyle(elem).lineHeight
-    let lineHeight = Number(str.slice(0, str.length - 2))
-    elem.style.height = lineHeight + 'px'
-
-    let scroll = elem.scrollHeight
-    elem.style.height = scroll + 5 + 'px'
-  }
-
-  function getDateOFChange(str) {
-    let date = new Date(str)
-    return `Изменено: ${date.getDate()}.${
-      date.getMonth() + 1
-    }.${date.getFullYear()} в ${date.getHours()}:${date.getMinutes()}`
   }
 
   return (

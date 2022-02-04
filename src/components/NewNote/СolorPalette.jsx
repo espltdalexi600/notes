@@ -1,5 +1,5 @@
 import React from 'react'
-import MyButton from '../MyButton/MyButton'
+import MyButton from '../generic/MyButton'
 import './СolorPalette.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

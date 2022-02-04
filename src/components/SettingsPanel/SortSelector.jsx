@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import MyButton from '../MyButton/MyButton'
-import CheckMark from '../CheckMark/CheckMark'
+import MyButton from '../../generic/MyButton'
+import CheckMark from '../generic/CheckMark'
 import './SortSelector.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

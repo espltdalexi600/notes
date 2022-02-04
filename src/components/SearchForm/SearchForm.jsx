@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import MyButton from '../MyButton/MyButton'
+import MyButton from '../generic/MyButton'
 import './SearchForm.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
