@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MyButton from '../../generic/MyButton'
+import MyButton from '../generic/MyButton'
 import CheckMark from '../generic/CheckMark'
 import './SortSelector.scss'
 

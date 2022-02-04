@@ -20,7 +20,10 @@ function NewNote({ note, setNote, addNote, deleteNote }) {
   }, [note.body])
 
   function closeNote(e) {
-    if (e.target.className === 'NewNote') {
+    if (
+      e.target.className === 'NewNote' ||
+      e.currentTarget.title === 'Закрыть'
+    ) {
       addNote(note)
       setNote({})
     }
@@ -39,6 +42,14 @@ function NewNote({ note, setNote, addNote, deleteNote }) {
     if (!result) return
     deleteNote(note.id)
     setNote({})
+  }
+
+  function changeBackground(e) {
+    setNote({
+      ...note,
+      background: e.currentTarget.style.backgroundColor,
+    })
+    setShowColPalet(false)
   }
 
   return (
@@ -76,15 +87,11 @@ function NewNote({ note, setNote, addNote, deleteNote }) {
             {showColPalet && (
               <ColorPalette
                 background={note.background}
-                onClick={(e) =>
-                  setNote({
-                    ...note,
-                    background: e.currentTarget.style.backgroundColor,
-                  })
-                }
+                onClick={changeBackground}
               />
             )}
             <Toolbar
+              note={note}
               closeNote={closeNote}
               copyNote={copyNote}
               deleteNote={deleteThisNote}
@@ -94,6 +101,7 @@ function NewNote({ note, setNote, addNote, deleteNote }) {
               changeShowingColPalet={() => {
                 setShowColPalet(!showColPalet)
               }}
+              archive={() => setNote({ ...note, archived: !note.archived })}
             />
           </div>
         </div>

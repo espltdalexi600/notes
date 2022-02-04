@@ -1,6 +1,6 @@
 import React from 'react'
 import SortSelector from './SortSelector'
-import MyButton from '../../generic/MyButton'
+import MyButton from '../generic/MyButton'
 import './SettingsPanel.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

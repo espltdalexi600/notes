@@ -49,6 +49,7 @@ function App() {
         dateOfView: '',
         editable: true,
         background: 'rgba(0, 0, 0, 0)',
+        archived: false,
       })
     }
   }
@@ -72,6 +73,7 @@ function App() {
               dateOfView: date,
               editable: note.editable,
               background: note.background,
+              archived: note.archived,
             }
           } else {
             return item
