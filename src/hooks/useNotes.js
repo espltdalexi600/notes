@@ -4,13 +4,19 @@ export const useSortedNotes = (notes, sort) => {
   const sortedNotes = useMemo(() => {
     if (notes.length < 2 || !sort) return notes
 
-    if (sort === 'dateOfChange' || sort === 'dateOfView') {
+    if (sort.startsWith('date')) {
       return [...notes].sort((a, b) =>
         new Date(a[sort]) > new Date(b[sort]) ? -1 : 1,
       )
     }
 
-    return [...notes].sort((a, b) => a[sort].localeCompare(b[sort]))
+    return [...notes].sort((a, b) => {
+      if (!a[sort] && !b[sort]) return 0
+      if (!a[sort]) return 1
+      if (!b[sort]) return -1
+
+      return a[sort].localeCompare(b[sort])
+    })
   }, [notes, sort])
 
   return sortedNotes
@@ -20,12 +26,10 @@ export const useNotes = (notes, sort, search) => {
   const sortedNotes = useSortedNotes(notes, sort)
 
   const sortedAndSearchedNotes = useMemo(() => {
-    let strSearch = search.trim().toLowerCase()
-    if (!strSearch) return sortedNotes
+    const regexp = new RegExp(search, 'i')
+    if (!search) return sortedNotes
     return sortedNotes.filter(
-      (item) =>
-        item.title.toLowerCase().includes(strSearch) ||
-        item.body.toLowerCase().includes(strSearch),
+      (item) => regexp.test(item.title) || regexp.test(item.body),
     )
   }, [search, sortedNotes])
 

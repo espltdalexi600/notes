@@ -35,7 +35,7 @@ function App() {
     localStorage.setItem('view', JSON.stringify(view))
   }, [view])
 
-  const sortedAndSearchedNotes = useNotes(notes, sort, search)
+  const sortedAndSearchedNotes = useNotes(notes, sort, search.trim())
 
   function openNote(note) {
     if (note.id) {
@@ -82,7 +82,16 @@ function App() {
       })
     } else {
       setNotes((notes) => {
-        return [...notes, { ...note, dateOfChange: date, dateOfView: date }]
+        return [
+          ...notes,
+          {
+            ...note,
+            title: note.title.trim(),
+            body: note.body.trim(),
+            dateOfChange: date,
+            dateOfView: date,
+          },
+        ]
       })
     }
   }
