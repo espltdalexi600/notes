@@ -1,11 +1,13 @@
 import React from 'react'
+import Highlight from './Highlight'
 import './Note.scss'
 
-function Note({ note, openNote }) {
+function Note({ note, openNote, search }) {
   function checkHigh(note) {
     let length = note.title.length + note.body.length
     return length > 100 ? true : false
   }
+
   return (
     <article
       onClick={() => openNote(note)}
@@ -18,8 +20,16 @@ function Note({ note, openNote }) {
             : note.background,
       }}
     >
-      {note.title && <h2 className="Note__title">{note.title}</h2>}
-      {note.body && <p className="Note__body">{note.body}</p>}
+      {note.title && (
+        <h2 className="Note__title">
+          <Highlight str={note.title} search={search} />
+        </h2>
+      )}
+      {note.body && (
+        <p className="Note__body">
+          <Highlight str={note.body} search={search} />
+        </p>
+      )}
       {note.title === '' && note.body === '' && (
         <h2 className="Note__message">Пустая заметка</h2>
       )}

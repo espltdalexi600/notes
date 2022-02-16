@@ -3,7 +3,7 @@ import Note from '../Note/Note'
 
 import './NoteList.scss'
 
-function NoteList({ notes, openNote, view }) {
+function NoteList({ notes, openNote, view, search }) {
   return (
     <main
       className={
@@ -13,7 +13,7 @@ function NoteList({ notes, openNote, view }) {
       }
     >
       {notes.map((note) => (
-        <Note key={note.id} note={note} openNote={openNote} />
+        <Note key={note.id} note={note} openNote={openNote} search={search} />
       ))}
     </main>
   )

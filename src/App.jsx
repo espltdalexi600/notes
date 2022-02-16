@@ -108,6 +108,7 @@ function App() {
             notes={sortedAndSearchedNotes}
             openNote={openNote}
             view={view}
+            search={search.trim()}
           />
         ) : (
           <h2>Заметки не найдены</h2>
