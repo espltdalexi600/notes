@@ -20,10 +20,12 @@ export const useNotes = (notes, sort, search) => {
   const sortedNotes = useSortedNotes(notes, sort)
 
   const sortedAndSearchedNotes = useMemo(() => {
-    let strSearch = search.trim()
+    let strSearch = search.trim().toLowerCase()
     if (!strSearch) return sortedNotes
     return sortedNotes.filter(
-      (item) => item.title.includes(strSearch) || item.body.includes(strSearch),
+      (item) =>
+        item.title.toLowerCase().includes(strSearch) ||
+        item.body.toLowerCase().includes(strSearch),
     )
   }, [search, sortedNotes])
 
