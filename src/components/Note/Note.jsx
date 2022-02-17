@@ -11,14 +11,11 @@ function Note({ note, openNote, search }) {
   return (
     <article
       onClick={() => openNote(note)}
-      className={checkHigh(note) ? 'Note Note--high' : 'Note'}
-      style={{
-        backgroundColor: note.background,
-        borderColor:
-          note.background === 'rgba(0, 0, 0, 0)'
-            ? 'rgba(0, 0, 0, 0.2)'
-            : note.background,
-      }}
+      className={
+        checkHigh(note)
+          ? `Note Note--${note.background} Note--high`
+          : `Note Note--${note.background}`
+      }
     >
       {note.title && (
         <h2 className="Note__title">

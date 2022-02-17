@@ -9,26 +9,17 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 function СolorPalette({ background, onClick }) {
   return (
     <ul className="СolorPalette">
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0)', borderRadius: '50%' }}
-        >
+      <li className="СolorPalette__circle СolorPalette__circle--transparent">
+        <MyButton onClick={onClick} data-background="transparent">
           <FontAwesomeIcon
             icon={faTintSlash}
             style={{ fontSize: '15px', color: '#4a4a4a' }}
           />
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{
-            backgroundColor: 'rgb(242, 139, 130)',
-            borderRadius: '50%',
-          }}
-        >
-          {background === 'rgb(242, 139, 130)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--moderate-pink">
+        <MyButton onClick={onClick} data-background="moderate-pink">
+          {background === 'moderate-pink' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}
@@ -36,13 +27,9 @@ function СolorPalette({ background, onClick }) {
           )}
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{ backgroundColor: 'rgb(251, 188, 4)', borderRadius: '50%' }}
-        >
-          {' '}
-          {background === 'rgb(251, 188, 4)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--choice-yellow">
+        <MyButton onClick={onClick} data-background="choice-yellow">
+          {background === 'choice-yellow' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}
@@ -50,16 +37,9 @@ function СolorPalette({ background, onClick }) {
           )}
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{
-            backgroundColor: 'rgb(255, 244, 117)',
-            borderRadius: '50%',
-          }}
-        >
-          {' '}
-          {background === 'rgb(255, 244, 117)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--unripe-yellow">
+        <MyButton onClick={onClick} data-background="unripe-yellow">
+          {background === 'unripe-yellow' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}
@@ -67,16 +47,9 @@ function СolorPalette({ background, onClick }) {
           )}
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{
-            backgroundColor: 'rgb(204, 255, 144)',
-            borderRadius: '50%',
-          }}
-        >
-          {' '}
-          {background === 'rgb(204, 255, 144)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--light-green">
+        <MyButton onClick={onClick} data-background="light-green">
+          {background === 'light-green' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}
@@ -84,16 +57,9 @@ function СolorPalette({ background, onClick }) {
           )}
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{
-            backgroundColor: 'rgb(167, 255, 235)',
-            borderRadius: '50%',
-          }}
-        >
-          {' '}
-          {background === 'rgb(167, 255, 235)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--pang">
+        <MyButton onClick={onClick} data-background="circle--pang">
+          {background === 'pang' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}
@@ -101,16 +67,9 @@ function СolorPalette({ background, onClick }) {
           )}
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{
-            backgroundColor: 'rgb(203, 240, 248)',
-            borderRadius: '50%',
-          }}
-        >
-          {' '}
-          {background === 'rgb(203, 240, 248)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--snow-blue">
+        <MyButton onClick={onClick} data-background="snow-blue">
+          {background === 'snow-blue' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}
@@ -118,16 +77,9 @@ function СolorPalette({ background, onClick }) {
           )}
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{
-            backgroundColor: 'rgb(174, 203, 250)',
-            borderRadius: '50%',
-          }}
-        >
-          {' '}
-          {background === 'rgb(174, 203, 250)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--blue-frost">
+        <MyButton onClick={onClick} data-background="blue-frost">
+          {background === 'blue-frost' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}
@@ -135,16 +87,9 @@ function СolorPalette({ background, onClick }) {
           )}
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{
-            backgroundColor: 'rgb(215, 174, 251)',
-            borderRadius: '50%',
-          }}
-        >
-          {' '}
-          {background === 'rgb(215, 174, 251)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--bright-lilac">
+        <MyButton onClick={onClick} data-background="bright-lilac">
+          {background === 'bright-lilac' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}
@@ -152,16 +97,9 @@ function СolorPalette({ background, onClick }) {
           )}
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{
-            backgroundColor: 'rgb(253, 207, 232)',
-            borderRadius: '50%',
-          }}
-        >
-          {' '}
-          {background === 'rgb(253, 207, 232)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--pink-pig">
+        <MyButton onClick={onClick} data-background="pink-pig">
+          {background === 'pink-pig' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}
@@ -169,16 +107,9 @@ function СolorPalette({ background, onClick }) {
           )}
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{
-            backgroundColor: 'rgb(230, 201, 168)',
-            borderRadius: '50%',
-          }}
-        >
-          {' '}
-          {background === 'rgb(230, 201, 168)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--zinnwaldite">
+        <MyButton onClick={onClick} data-background="zinnwaldite">
+          {background === 'zinnwaldite' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}
@@ -186,16 +117,9 @@ function СolorPalette({ background, onClick }) {
           )}
         </MyButton>
       </li>
-      <li>
-        <MyButton
-          onClick={onClick}
-          style={{
-            backgroundColor: 'rgb(232, 234, 237)',
-            borderRadius: '50%',
-          }}
-        >
-          {' '}
-          {background === 'rgb(232, 234, 237)' && (
+      <li className="СolorPalette__circle СolorPalette__circle--pale-gray">
+        <MyButton onClick={onClick} data-background="pale-gray">
+          {background === 'pale-gray' && (
             <FontAwesomeIcon
               icon={faCheck}
               style={{ fontSize: '15px', color: '#4a4a4a' }}

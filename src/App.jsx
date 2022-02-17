@@ -48,7 +48,7 @@ function App() {
         dateOfChange: '',
         dateOfView: '',
         editable: true,
-        background: 'rgba(0, 0, 0, 0)',
+        background: 'transparent',
         archived: false,
       })
     }

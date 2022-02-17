@@ -47,7 +47,7 @@ function NewNote({ note, setNote, addNote, deleteNote }) {
   function changeBackground(e) {
     setNote({
       ...note,
-      background: e.currentTarget.style.backgroundColor,
+      background: e.currentTarget.dataset.background,
     })
     setShowColPalet(false)
   }
@@ -55,10 +55,7 @@ function NewNote({ note, setNote, addNote, deleteNote }) {
   return (
     <div onMouseDown={closeNote} className="NewNote">
       <div className="NewNote__wrapper">
-        <div
-          className="NewNote__shield"
-          style={{ backgroundColor: note.background }}
-        >
+        <div className={`NewNote__shield NewNote__shield--${note.background}`}>
           <form className="NewNote__form">
             <textarea
               disabled={!note.editable}
