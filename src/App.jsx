@@ -5,6 +5,7 @@ import NewNote from './components/NewNote/NewNote'
 import SearchForm from './components/SearchForm/SearchForm'
 import SettingsPanel from './components/SettingsPanel/SettingsPanel'
 import MyButton from './components/generic/MyButton'
+import MyModal from './components/generic/MyModal'
 import './App.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -96,6 +97,16 @@ function App() {
     }
   }
 
+  function closeNote(e) {
+    if (
+      e.target.className === 'MyModal' ||
+      e.currentTarget.title === 'Закрыть'
+    ) {
+      addNote(note)
+      setNote({})
+    }
+  }
+
   function deleteNote() {
     setNotes(notes.filter((item) => (item.id === note.id ? false : true)))
   }
@@ -124,12 +135,15 @@ function App() {
         )}
       </div>
       {note.id && (
-        <NewNote
-          note={note}
-          addNote={addNote}
-          setNote={setNote}
-          deleteNote={deleteNote}
-        />
+        <MyModal onClick={closeNote}>
+          <NewNote
+            note={note}
+            addNote={addNote}
+            setNote={setNote}
+            closeNote={closeNote}
+            deleteNote={deleteNote}
+          />
+        </MyModal>
       )}
       <div className="App__bt-addNote-wrapper">
         <MyButton

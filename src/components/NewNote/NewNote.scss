@@ -1,97 +1,69 @@
 @import '../../styles/common.scss';
 
 .NewNote {
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 1;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+  width: 100%;
 
-  &__wrapper {
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    color: rgb(32, 33, 36);
-    height: 70vh;
-    overflow: hidden;
-    width: 650px;
-
-    @media (max-width: $mobile-width), (max-height: $mobile-width) {
-      border-radius: 0%;
-      height: 100vh;
-      width: 100vw;
-    }
+  &--transparent {
+    background: transparent;
+    border-color: rgba(0, 0, 0, 0.2);
   }
 
-  &__shield {
-    display: grid;
-    grid-template-rows: 1fr auto;
-    height: 100%;
-    width: 100%;
+  &--moderate-pink {
+    background: rgb(242, 139, 130);
+    border-color: rgb(242, 139, 130);
+  }
 
-    &--transparent {
-      background: transparent;
-      border-color: rgba(0, 0, 0, 0.2);
-    }
+  &--choice-yellow {
+    background: rgb(251, 188, 4);
+    border-color: rgb(251, 188, 4);
+  }
 
-    &--moderate-pink {
-      background: rgb(242, 139, 130);
-      border-color: rgb(242, 139, 130);
-    }
+  &--unripe-yellow {
+    background: rgb(255, 244, 117);
+    border-color: rgb(255, 244, 117);
+  }
 
-    &--choice-yellow {
-      background: rgb(251, 188, 4);
-      border-color: rgb(251, 188, 4);
-    }
+  &--light-green {
+    background: rgb(204, 255, 144);
+    border-color: rgb(204, 255, 144);
+  }
 
-    &--unripe-yellow {
-      background: rgb(255, 244, 117);
-      border-color: rgb(255, 244, 117);
-    }
+  &--pang {
+    background: rgb(167, 255, 235);
+    border-color: rgb(167, 255, 235);
+  }
 
-    &--light-green {
-      background: rgb(204, 255, 144);
-      border-color: rgb(204, 255, 144);
-    }
+  &--snow-blue {
+    background: rgb(203, 240, 248);
+    border-color: rgb(203, 240, 248);
+  }
 
-    &--pang {
-      background: rgb(167, 255, 235);
-      border-color: rgb(167, 255, 235);
-    }
+  &--blue-frost {
+    background: rgb(174, 203, 250);
+    border-color: rgb(174, 203, 250);
+  }
 
-    &--snow-blue {
-      background: rgb(203, 240, 248);
-      border-color: rgb(203, 240, 248);
-    }
+  &--bright-lilac {
+    background: rgb(215, 174, 251);
+    border-color: rgb(215, 174, 251);
+  }
 
-    &--blue-frost {
-      background: rgb(174, 203, 250);
-      border-color: rgb(174, 203, 250);
-    }
+  &--pink-pig {
+    background: rgb(253, 207, 232);
+    border-color: rgb(253, 207, 232);
+  }
 
-    &--bright-lilac {
-      background: rgb(215, 174, 251);
-      border-color: rgb(215, 174, 251);
-    }
+  &--zinnwaldite {
+    background: rgb(230, 201, 168);
+    border-color: rgb(230, 201, 168);
+  }
 
-    &--pink-pig {
-      background: rgb(253, 207, 232);
-      border-color: rgb(253, 207, 232);
-    }
-
-    &--zinnwaldite {
-      background: rgb(230, 201, 168);
-      border-color: rgb(230, 201, 168);
-    }
-
-    &--pale-gray {
-      background: rgb(232, 234, 237);
-      border-color: rgb(232, 234, 237);
-    }
+  &--pale-gray {
+    background: rgb(232, 234, 237);
+    border-color: rgb(232, 234, 237);
   }
 
   &__form {
